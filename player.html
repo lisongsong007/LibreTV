@@ -83,58 +83,9 @@
         <!-- 源信息 -->
 
 
-        <div class="player-container flex justify-between py-2 px-4 mb-2 bg-gray-700" id="resourceInfoBarContainer">
-    <!-- 动态内容将被缓存 -->
-</div>
-
-<script>
-    const CACHE_KEY = 'resource_info_cache'; // 缓存键名
-    const CACHE_EXPIRE = 3600 * 1000; // 缓存有效期（3600秒，单位转为毫秒）
-
-    // 从缓存加载（带过期判断）
-    function loadFromCache() {
-        const cachedData = localStorage.getItem(CACHE_KEY);
-        if (cachedData) {
-            const { html, timestamp } = JSON.parse(cachedData);
-            // 判断是否在有效期内（当前时间 - 缓存时间 < 有效期）
-            if (Date.now() - timestamp < CACHE_EXPIRE) {
-                document.getElementById('resourceInfoBarContainer').innerHTML = html;
-                return true; // 缓存有效，已加载
-            }
-        }
-        return false; // 缓存不存在或已过期
-    }
-
-    // 渲染并更新缓存
-    function renderAndCache() {
-        // 这里替换为你的实际渲染逻辑，生成动态HTML
-        const renderedHtml = `
-            <div class="info-card">示例资源信息</div>
-            <button class="switch-btn">切换</button>
-            <div class="video-count">共10个视频</div>
-        `;
-
-        // 插入容器
-        const container = document.getElementById('resourceInfoBarContainer');
-        container.innerHTML = renderedHtml;
-
-        // 存入缓存（包含当前时间戳）
-        localStorage.setItem(CACHE_KEY, JSON.stringify({
-            html: renderedHtml,
-            timestamp: Date.now() // 记录缓存时间
-        }));
-    }
-
-    // 页面加载时执行
-    document.addEventListener('DOMContentLoaded', function() {
-        // 先尝试加载缓存，失败则重新渲染
-        if (!loadFromCache()) {
-            renderAndCache();
-        }
-    });
-</script>
-
-
+       <div class="player-container flex justify-between py-2 px-4 mb-2 bg-gray-700" id="resourceInfoBarContainer">
+            <!-- 资源信息卡片、切换按钮、视频数将由JS动态渲染 -->
+        </div>
 
 
 
