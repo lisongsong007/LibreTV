@@ -82,8 +82,18 @@
 
         <!-- 源信息 -->
         <div class="player-container flex justify-between py-2 px-4 mb-2 bg-gray-700" id="resourceInfoBarContainer">
-            <!-- 资源信息卡片、切换按钮、视频数将由JS动态渲染 -->
-        </div>
+    <!-- 资源信息卡片、切换按钮、视频数将由JS动态渲染 -->
+</div>
+
+<!-- 在容器后面或页面底部添加脚本 -->
+<script>
+    // 等待DOM加载完成后立即执行渲染
+    document.addEventListener('DOMContentLoaded', function() {
+        // 调用渲染函数（替换为你实际的渲染函数名）
+        renderResourceInfo(); 
+    });
+</script>
+
 
         <!-- 集数导航 -->
         <div class="player-container">
